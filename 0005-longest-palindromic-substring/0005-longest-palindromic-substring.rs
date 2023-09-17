@@ -1,14 +1,18 @@
+//Manacher's algorithm
 impl Solution {
     pub fn longest_palindrome(s: String) -> String {
         if s.is_empty() {
-            return String::new();
+            return String::new();//If it's empty, an empty string is returned since an empty string is considered a palindrome.
         }
 
         // Preprocess the input string to handle even-length palindromes.
         let mut modified_s = String::new();
-        modified_s.push('^');
-        for c in s.chars() {
-            modified_s.push('#');
+
+        modified_s.push('^');//initialize modified_s with '^'. This is done to handle palindromes that can start from the beginning of the string.
+
+        for c in s.chars() { //iterate through each character of the original string s and insert # characters between each character and at the beginning.
+        
+            modified_s.push('#'); 
             modified_s.push(c);
         }
         modified_s.push('#');
